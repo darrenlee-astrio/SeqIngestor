@@ -3,7 +3,7 @@ version: '3.4'
 services:
   api:
     image: ${DOCKER_REGISTRY-}api
-    container_name: api
+    container_name: seqingestor-api
     build:
       context: .
       dockerfile: src/Api/Dockerfile
@@ -16,6 +16,7 @@ services:
   
   seqcli:
     image: datalust/seqcli:latest
+    container_name: seqingester-seq
     command: apikey create -t newapikey --token 12345678901234567890 -s http://seq
     depends_on:
       - seq
